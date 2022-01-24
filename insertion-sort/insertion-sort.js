@@ -25,7 +25,8 @@ console.log(array1);
 
 //=================================
 // VERSION 2
-/*Here we can go further and wrap up all the previous code in a function for code reuse, and duplicate the array, so our function doesn't affect the original array.*/
+/*Here we can go further and wrap up all the previous code in a function for code reuse,
+and duplicate the array, so our function doesn't affect the original array.*/
 
 function insertionSorting(array) {
     const arr = array.slice();
