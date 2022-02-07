@@ -65,10 +65,4 @@ function returnDefault() {
 }
 
 //Testing the function
-//It is expected that every time we pass a string, array or object to the function
-//it returns the same type of data structure
-//with each word inside it starting with a capital letter,
-//otherwise, it should return a message telling the user that
-//it couldn't interpret the content inside the variable
-
 console.log(toTitleCase({a:'hi', b: 'hello', c: 'howdy'}));
