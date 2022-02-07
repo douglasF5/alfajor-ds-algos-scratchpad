@@ -1,3 +1,7 @@
+## About
+
+- One of the ways for implementing insertion sort algorithm with JavaScript
+
 ## Resources
 
 -   on destructuring assignment
