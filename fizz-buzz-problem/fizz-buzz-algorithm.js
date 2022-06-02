@@ -16,12 +16,12 @@ const fizz = (num) => !(num % 3) ? "Fizz" : "";
 const buzz = (num) => !(num % 5) ? "Buzz" : "";
 
 //Generate the final array
-const generateFinalArray = (upperLimit) => {
+const fizzBuzz = (upperLimit) => {
   const numbersArray = generateNumbersArray(upperLimit);
   let finalArray = [];
   
   numbersArray.forEach(num => {
-		const displayValue = fizz(num) + buzz(num) || num;
+		const displayValue = fizz(num) + buzz(num) || String(num);
     finalArray.push(displayValue);
   })
   
@@ -29,4 +29,4 @@ const generateFinalArray = (upperLimit) => {
  }
 
 //Print the final array
-console.log(generateFinalArray(100));
+console.log(fizzBuzz(100));
