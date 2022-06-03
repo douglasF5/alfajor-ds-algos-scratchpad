@@ -21,8 +21,8 @@ const fizzBuzz = (upperLimit) => {
   let finalArray = [];
   
   numbersArray.forEach(num => {
-		const displayValue = fizz(num) + buzz(num) || String(num);
-    finalArray.push(displayValue);
+	const displayValue = fizz(num) + buzz(num) || String(num);
+	finalArray.push(displayValue);
   })
   
   return finalArray;
