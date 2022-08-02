@@ -11,4 +11,4 @@ const generateFibonacciSequence = (len, i=0, arr=[1]) => {
 
 const fibonacciSequence = generateFibonacciSequence(5);
 
-console.log(fibonacciSequence);
+console.log(fibonacciSequence); // [1, 1, 2, 3, 5]
