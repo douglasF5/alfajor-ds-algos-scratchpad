@@ -2,7 +2,11 @@ function get(query: string): HTMLElement {
   return document.querySelector(query);
 }
 
-function append(parent: HTMLElement, elmsArray: HTMLElement[]): void {
+function append(parent: HTMLElement, elmsArray: HTMLElement[], cleanup=false): void {
+  if(cleanup) {
+    parent.innerHTML = '';
+  }
+  
   elArr.forEach(el => {
     parent.append(el);
   });
@@ -25,4 +29,12 @@ const list = create(
   </ul>`
 );
 
-append(app, [list]);
+const message = create(`
+  <h1 class="title">Loading...</h1>
+`);
+
+append(app, [message]);
+
+setTimeout(() => {
+  append(app, [h1, list], true);
+}, 2000);
