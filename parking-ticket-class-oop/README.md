@@ -1,6 +1,6 @@
 ## Task description
 
-- Create a class to represent paking tickets with the following properties:
+- Create a class to represent parking tickets with the following properties:
   - clientName: string;
   - vehicleType: 'car' | 'motorcycle';
   - plate: string;
