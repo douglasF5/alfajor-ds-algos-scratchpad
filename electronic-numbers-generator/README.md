@@ -1,6 +1,6 @@
 ## Task description
 
-1. Create one function that receives an input and returns an output like these:
+1. Create a function that receives an input and returns an output like this:
 
 Input:
   <pre>
@@ -12,4 +12,4 @@ Input:
 Output:
 <pre>123456789</pre>
 
-2. Create another function that does the opposite, it takes regular numbers and returns the stylized version
+2. Create another function that does the opposite, takes regular numbers and returns their stylized version
