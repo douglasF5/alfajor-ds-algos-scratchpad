@@ -1,46 +1,49 @@
-// VERSION 1
-var array1 = [0, 6, 5, 456, 11, 3, 1, 8, 7, 2, 4];
-var temp;
+const averageArr = [2, 19, 1, 5, 8, 32, 6];
+const worstArr = [32, 19, 8, 6, 5, 2, 1];
 
-for (let i = 1; i < array1.length; i++) {
-    for (j = i; j > 0; j--) {
-        if (array1[j] < array1[j - 1]) {
-            //Here we can approach this in at least two ways:
+//APPROACH 1
+function insertionSort1(inputArr: number[]) {
+  const arr = [...inputArr];
+  const len = arr.length;
+  let runningCounter = 0;
 
-            //First approach: using the temp variable and switching i and j
-            /*temp = array1[j - 1];
-            array1[j - 1] = array1[j];
-            array1[j] = temp; */
-
-            // Second approach: Array destructuring
-            /* Here we are using Array destructuring to assign each element on the left to an element on the right that has the same index.*/
-            [array1[j - 1], array1[j]] = [array1[j], array1[j - 1]];
-        } else {
-            break;
-        }
+  for (let i = 1; i < len; i++) {
+    for (let j = i; j > 0; j--) {
+      if (arr[j] < arr[j - 1]) {
+        runningCounter++;
+        [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+      } else {
+        break;
+      }
     }
+  }
+
+  console.log(runningCounter);
+  return arr;
 }
 
-console.log(array1);
+//APPROACH 2
+function insertionSort2(inputArr: number[]) {
+  const arr = [...inputArr];
+  const len = arr.length;
+  let runningCounter = 0;
+  let temp: number, j: number;
 
-//=================================
-// VERSION 2
-/*Here we can go further and wrap up all the previous code in a function for code reuse,
-and duplicate the array, so our function doesn't affect the original array.*/
+  for (let i = 1; i < len; i++) {
+    temp = arr[i];
+    j = i - 1;
 
-function insertionSorting(array) {
-    const arr = array.slice();
-    for (let i = 1; i < arr.length; i++) {
-        for (j = i; j > 0; j--) {
-            if (arr[j] < arr[j - 1]) {
-                [arr[j - 1], arr[j]] = [arr[j], arr[j - 1]];
-            } else {
-                break;
-            }
-        }
+    while (j >= 0 && arr[j] > temp) {
+      runningCounter++;
+      arr[j + 1] = arr[j];
+      j = j - 1;
     }
 
-    return arr;
+    arr[j + 1] = temp;
+  }
+
+  console.log(runningCounter);
+  return arr;
 }
 
-console.log(insertionSorting([0, 6, 5, 456, 11, 3, 1, 8, 7, 2, 4]));
+console.log(insertionSort1(worstArr)); //=> [1, 2, 5, 6, 8, 19, 32]
