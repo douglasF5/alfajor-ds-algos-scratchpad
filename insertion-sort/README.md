@@ -1,6 +1,6 @@
-## About
+# About
 
-- One of the ways for implementing insertion sort algorithm with JavaScript
+- Insertion sort algorithm with TypeScript
 
 ## Resources
 
