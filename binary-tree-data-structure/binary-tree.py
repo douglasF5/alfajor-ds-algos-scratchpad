@@ -22,13 +22,33 @@ class Node:
         else:
             self.data = data
 
-    # print the tree method (in-order traversal)
-    def print_nodes_in_order(self):
+    # method printing nodes (pre-order traversal)
+    def print_nodes_pre_order(self):
         print(self.data)
+        
         if self.left:
-            self.left.print_tree()
+            self.left.print_nodes_pre_order()
         if self.right:
-            self.right.print_tree()
+            self.right.print_nodes_pre_order()
+    
+    # method printing nodes (in-order traversal)
+    def print_nodes_in_order(self):
+        if self.left:
+            self.left.print_nodes_in_order()
+            
+        print(self.data)
+        
+        if self.right:
+            self.right.print_nodes_in_order()
+    
+    # method printing nodes (post-order traversal)
+    def print_nodes_post_order(self):
+        if self.left:
+            self.left.print_nodes_post_order()
+        if self.right:
+            self.right.print_nodes_post_order()
+        
+        print(self.data)
 
 # testing the class and its methods
 # creating the root node
@@ -40,4 +60,6 @@ root.insert(14)
 root.insert(3)
 
 # traversing tree and printing nodes
+root.print_nodes_pre_order()
 root.print_nodes_in_order()
+root.print_nodes_post_order()
