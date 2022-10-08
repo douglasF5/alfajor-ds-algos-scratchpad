@@ -1,5 +1,4 @@
 # Description
 
-- Implementation of the Binary Tree data structure with Python
-- The Node Class is used to instantiate objects that hold data and references to their left and right sub-trees
-- Class methods: insert node and print node (pre-order, in-order, post-order)
+- Implementation of the Binary Tree data structure with Python using a more functional approach
+- Functions: create, insert, and print nodes (pre-order, in-order, post-order)
