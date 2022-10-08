@@ -1,65 +1,70 @@
-# node class
-class Node:
-    # constructor
-    def __init__(self, data):
-        self.left = None
-        self.right = None
-        self.data = data
+# creating a node
+def create_root(data):
+    return {
+        "data": data,
+        "left": None,
+        "right": None
+    }
 
-    # insert method
-    def insert(self, data):
-        if self.data:
-            if data < self.data:
-                if self.left is None:
-                    self.left = Node(data)
-                else:
-                    self.left.insert(data)
+# inserting a node to the tree
+def insert_node(root, data):
+    def create_node(data):
+        return {
+            "data": data,
+            "left": None,
+            "right": None
+        }
+    
+    if root["data"]:
+        if data < root["data"]:
+            if root["left"] is None:
+                root["left"] = create_node(data)
             else:
-                if self.right is None:
-                    self.right = Node(data)
-                else:
-                    self.right.insert(data)
+                insert_node(root["left"], data)
         else:
-            self.data = data
+            if root["right"] is None:
+                root["right"] = create_node(data)
+            else:
+                insert_node(root["right"], data)
+    else:
+        root["data"] = data
 
-    # method printing nodes (pre-order traversal)
-    def print_nodes_pre_order(self):
-        print(self.data)
-        
-        if self.left:
-            self.left.print_nodes_pre_order()
-        if self.right:
-            self.right.print_nodes_pre_order()
+# traversing the tree (pre-order, in-order, and post-order) recursively
+def traverse_tree_recur(root, fn, order = "pre_order"):
+    if order == "pre_order": fn(root["data"])
     
-    # method printing nodes (in-order traversal)
-    def print_nodes_in_order(self):
-        if self.left:
-            self.left.print_nodes_in_order()
-            
-        print(self.data)
-        
-        if self.right:
-            self.right.print_nodes_in_order()
+    if root["left"]:
+        traverse_tree_recur(root["left"], fn, order)
     
-    # method printing nodes (post-order traversal)
-    def print_nodes_post_order(self):
-        if self.left:
-            self.left.print_nodes_post_order()
-        if self.right:
-            self.right.print_nodes_post_order()
-        
-        print(self.data)
+    if order == "in_order": fn(root["data"])
+    
+    if root["right"]:
+        traverse_tree_recur(root["right"], fn, order)
+    
+    if order == "post_order": fn(root["data"])
 
-# testing the class and its methods
-# creating the root node
-root = Node(12)
+# traversing the tree (pre-order, in-order, and post-order) iteratively
+def traverse_tree_recur(root, fn, order = "pre_order"):
+    #...
 
+# printing tree nodes
+def print_node(node):
+    print(node)
+
+# testing algorithms
 # inserting nodes (sub-trees)
-root.insert(6)
-root.insert(14)
-root.insert(3)
+root = create_root(12)
+nodes = [24, 27, 23, 26, 28, 29]
 
-# traversing tree and printing nodes
-root.print_nodes_pre_order()
-root.print_nodes_in_order()
-root.print_nodes_post_order()
+for node in nodes:
+    insert_node(root, node)
+
+# printing tree nodes in different orders using recursion
+traverse_tree_recur(root, print_node, "pre_order")
+traverse_tree_recur(root, print_node, "in_order")
+traverse_tree_recur(root, print_node, "post_order")
+
+# printing tree nodes in different orders iteratively
+traverse_tree_iterate(root, print_node, "pre_order")
+traverse_tree_iterate(root, print_node, "in_order")
+traverse_tree_iterate(root, print_node, "post_order")
