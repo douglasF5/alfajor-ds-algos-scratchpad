@@ -6,7 +6,7 @@ def create_root(data):
         "right": None
     }
 
-# inserting a node to the tree
+# directly inserting a node to the tree
 def insert_node(root, data):
     
     # function to create a node
@@ -40,6 +40,32 @@ def insert_node(root, data):
                 insert_node(root["right"], data)
     else:
         root["data"] = data
+
+# checking if the node already exists before inserting it to the tree
+def insert_unique_node(root, data):
+    
+    # function to create a node
+    def create_node(data):
+        return {
+            "data": data,
+            "left": None,
+            "right": None
+        }
+        
+    search_result = search_binary_tree(root, data)
+    
+    if not search_result["is_found"]:
+        
+        if search_result["key"] is None:
+            root = create_node(data)
+        elif data < search_result["key"]["data"]:
+            search_result["key"]["left"] = create_node(data)
+        else:
+            search_result["key"]["right"] = create_node(data)
+        
+        return True
+    else:
+        return False
 
 # traversing the tree (pre-order, in-order, and post-order) recursively
 def traverse_tree_recur(root, fn, order = "pre_order"):
@@ -114,7 +140,7 @@ root = create_root(10)
 nodes = [8, 7, 12]
 
 for node in nodes:
-    insert_node(root, node)
+    insert_unique_node(root, node)
 
 # printing tree nodes in different orders using recursion
 traverse_tree_recur(root, print_node, "pre_order")
