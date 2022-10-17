@@ -33,7 +33,7 @@ function plusMinus(arr: number[]): void {
     
     //TODO
     //[x] calculate the ratio for each number
-        //[x] got throught counting the targets
+        //[x] go through counting the targets
         //[x] maybe I an use an array to keep track of the counting
         //[?] decimal precision
     //[x] print number
