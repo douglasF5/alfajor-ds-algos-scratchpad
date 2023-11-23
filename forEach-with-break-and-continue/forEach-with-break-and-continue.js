@@ -1,24 +1,31 @@
-function forEvery(array, cb) {
+type NextIteration = 'break' | 'skip' | 'proceed';
+type CallBackReturn = NextIteration | void;
+
+function forEvery<TArray>(
+  array: TArray[],
+  cb: (element: TArray, index: number) => CallBackReturn
+) {
   const arrayLen = array.length;
-    
-  for(let i = 0; i < arrayLen; i++) {
-    let controlFlag = null;
-    controlFlag = cb(array[i], i);
-    
-    if(controlFlag === true) {
+
+  for (let i = 0; i < arrayLen; i++) {
+    const nextIteration: NextIteration = cb(array[i], i) || 'proceed';
+
+    if (nextIteration === 'break') {
       break;
-    } else if(controlFlag === false) {
+    }
+
+    if (nextIteration === 'skip') {
       continue;
     }
   }
 }
 
-const myArray = ["a", "b", "c", "d", "e"];
+const myArray = ['a', 'b', 'c', 'd', 'e'];
 
 forEvery(myArray, (el) => {
-  if(el === "c") {
-    return true;
+  if (el === 'c') {
+    return 'skip';
   }
-  
-  console.log("element: ", el);
+
+  console.log('element: ', el);
 });
